@@ -1,0 +1,4766 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Api Documentation",
+      "version": "1.0",
+      "title": "Api Documentation",
+      "termsOfService": "urn:tos",
+      "contact": {
+  
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      }
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "auth-controller",
+        "description": "Auth Controller"
+      },
+      {
+        "name": "basic-error-controller",
+        "description": "Basic Error Controller"
+      },
+      {
+        "name": "echipament-plaja-controller",
+        "description": "Echipament Plaja Controller"
+      },
+      {
+        "name": "firma-controller",
+        "description": "Firma Controller"
+      },
+      {
+        "name": "plaja-controller",
+        "description": "Plaja Controller"
+      },
+      {
+        "name": "poza-controller",
+        "description": "Poza Controller"
+      },
+      {
+        "name": "rezervare-controller",
+        "description": "Rezervare Controller"
+      },
+      {
+        "name": "stare-echipament-plaja-controller",
+        "description": "Stare Echipament Plaja Controller"
+      },
+      {
+        "name": "stare-rezervare-controller",
+        "description": "Stare Rezervare Controller"
+      },
+      {
+        "name": "statiune-controller",
+        "description": "Statiune Controller"
+      },
+      {
+        "name": "tip-echipament-plaja-controller",
+        "description": "Tip Echipament Plaja Controller"
+      },
+      {
+        "name": "user-controller",
+        "description": "User Controller"
+      }
+    ],
+    "paths": {
+      "/auth/access-token": {
+        "get": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "refreshAuth",
+          "operationId": "refreshAuthUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TokenResponseDto"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/activate-account": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "activateUserAccount",
+          "operationId": "activateUserAccountUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "tokenAccessRequestDto",
+              "description": "tokenAccessRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TokenAccessRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/confirm-email-change": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "confirmEmailChange",
+          "operationId": "confirmEmailChangeUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "tokenAccessRequestDto",
+              "description": "tokenAccessRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TokenAccessRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/forgotten-password": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "forgottenPassword",
+          "operationId": "forgottenPasswordUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "forgottenPasswordRequestDto",
+              "description": "forgottenPasswordRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ForgottenPasswordRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/login": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "authenticateUser",
+          "operationId": "authenticateUserUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "loginRequestDto",
+              "description": "loginRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/LoginRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/AuthResponseDto"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/login/recovery-code": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "loginRecoveryCode",
+          "operationId": "loginRecoveryCodeUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "loginVerificationRequestDto",
+              "description": "loginVerificationRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/LoginVerificationRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/AuthResponseDto"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/login/verify": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "verifyLogin",
+          "operationId": "verifyLoginUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "loginVerificationRequestDto",
+              "description": "loginVerificationRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/LoginVerificationRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/AuthResponseDto"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/password-reset": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "passwordReset",
+          "operationId": "passwordResetUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "passwordResetRequestDto",
+              "description": "passwordResetRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/PasswordResetRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/auth/signup": {
+        "post": {
+          "tags": [
+            "auth-controller"
+          ],
+          "summary": "registerUser",
+          "operationId": "registerUserUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "signUpRequestDto",
+              "description": "signUpRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SignUpRequestDto"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/cancel-account": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "cancelAccount",
+          "operationId": "cancelAccountUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/change-password": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "changePassword",
+          "operationId": "changePasswordUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "changePasswordDto",
+              "description": "changePasswordDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ChangePasswordDto"
+              }
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/disable-two-factor": {
+        "put": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "disableTwoFactor",
+          "operationId": "disableTwoFactorUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/echipamente-plaja": {
+        "get": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "getAllEchipamentePlaja",
+          "operationId": "getAllEchipamentePlajaUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/EchipamentPlajaDTO"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "createEchipamentPlaja",
+          "operationId": "createEchipamentPlajaUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "echipamentPlaja",
+              "description": "echipamentPlaja",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlajaDTO"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlajaDTO"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/echipamente-plaja/by-plaja/{plajaId}": {
+        "get": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "getEchipamenteByPlajaId",
+          "operationId": "getEchipamenteByPlajaIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "plajaId",
+              "in": "path",
+              "description": "plajaId",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/EchipamentPlajaDTO"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "deleteEchipamentPlajaByPlajaId",
+          "operationId": "deleteEchipamentPlajaByPlajaIdUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "plajaId",
+              "in": "path",
+              "description": "plajaId",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/echipamente-plaja/{id}": {
+        "get": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "getEchipamentPlajaById",
+          "operationId": "getEchipamentPlajaByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlajaDTO"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "updateEchipamentPlaja",
+          "operationId": "updateEchipamentPlajaUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedEchipamentPlaja",
+              "description": "updatedEchipamentPlaja",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "deleteEchipamentPlaja",
+          "operationId": "deleteEchipamentPlajaUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "patchEchipamentPlaja",
+          "operationId": "patchEchipamentPlajaUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "patchDTO",
+              "description": "patchDTO",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlajaDTO"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/EchipamentPlajaDTO"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/echipamente-plaja/{id}/preturi": {
+        "get": {
+          "tags": [
+            "echipament-plaja-controller"
+          ],
+          "summary": "getPreturiForEchipament",
+          "operationId": "getPreturiForEchipamentUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/PretDTO"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/error": {
+        "get": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingGET",
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "head": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingHEAD",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingDELETE",
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "options": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingOPTIONS",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "errorHtml",
+          "operationId": "errorHtmlUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "text/html"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/firme": {
+        "get": {
+          "tags": [
+            "firma-controller"
+          ],
+          "summary": "getAllFirme",
+          "operationId": "getAllFirmeUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Firma"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "firma-controller"
+          ],
+          "summary": "createFirma",
+          "operationId": "createFirmaUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "firma",
+              "description": "firma",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Firma"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Firma"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/firme/{id}": {
+        "get": {
+          "tags": [
+            "firma-controller"
+          ],
+          "summary": "getFirmaById",
+          "operationId": "getFirmaByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Firma"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "firma-controller"
+          ],
+          "summary": "updateFirma",
+          "operationId": "updateFirmaUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedFirma",
+              "description": "updatedFirma",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Firma"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Firma"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "firma-controller"
+          ],
+          "summary": "deleteFirma",
+          "operationId": "deleteFirmaUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "firma-controller"
+          ],
+          "summary": "patchFirma",
+          "operationId": "patchFirmaUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "patchDTO",
+              "description": "patchDTO",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/FirmaDTO"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Firma"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/logout": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "logout",
+          "operationId": "logoutUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/plaje": {
+        "get": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "getAllPlaje",
+          "operationId": "getAllPlajeUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Plaja"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "createPlaja",
+          "operationId": "createPlajaUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "plaja",
+              "description": "plaja",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Plaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Plaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/plaje/user": {
+        "get": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "getAllPlajeBy",
+          "operationId": "getAllPlajeByUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Plaja"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/plaje/activ/{activ}": {
+        "get": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "getPlajeByActiv",
+          "operationId": "getPlajeByActivUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "activ",
+              "in": "path",
+              "description": "activ",
+              "required": true,
+              "type": "boolean"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Plaja"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/plaje/statiune/{statiuneId}": {
+        "get": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "getPlajeByStatiuneId",
+          "operationId": "getPlajeByStatiuneIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "statiuneId",
+              "in": "path",
+              "description": "statiuneId",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Plaja"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/plaje/{id}": {
+        "get": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "getPlajaById",
+          "operationId": "getPlajaByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Plaja"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "updatePlaja",
+          "operationId": "updatePlajaUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedPlaja",
+              "description": "updatedPlaja",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Plaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Plaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "deletePlaja",
+          "operationId": "deletePlajaUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "plaja-controller"
+          ],
+          "summary": "patchPlaja",
+          "operationId": "patchPlajaUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "patchDTO",
+              "description": "patchDTO",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/PlajaDTO"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Plaja"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/poze": {
+        "get": {
+          "tags": [
+            "poza-controller"
+          ],
+          "summary": "getAllPoze",
+          "operationId": "getAllPozeUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Poza"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "poza-controller"
+          ],
+          "summary": "createPoza",
+          "operationId": "createPozaUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "poza",
+              "description": "poza",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Poza"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Poza"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/poze/plaja/{plajaId}": {
+        "get": {
+          "tags": [
+            "poza-controller"
+          ],
+          "summary": "getPozeByPlajaId",
+          "operationId": "getPozeByPlajaIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "plajaId",
+              "in": "path",
+              "description": "plajaId",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Poza"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/poze/{id}": {
+        "get": {
+          "tags": [
+            "poza-controller"
+          ],
+          "summary": "getPozaById",
+          "operationId": "getPozaByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Poza"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "poza-controller"
+          ],
+          "summary": "updatePoza",
+          "operationId": "updatePozaUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedPoza",
+              "description": "updatedPoza",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Poza"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Poza"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "poza-controller"
+          ],
+          "summary": "deletePoza",
+          "operationId": "deletePozaUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/rezervari": {
+        "get": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "getAllRezervari",
+          "operationId": "getAllRezervariUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Rezervare"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "createRezervare",
+          "operationId": "createRezervareUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "rezervare",
+              "description": "rezervare",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Rezervare"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Rezervare"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/rezervari/{id}/anuleaza": {
+        "put": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "anulaRezervare",
+          "operationId": "anulaRezervareUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/rezervari/pozitii-rezervate": {
+        "get": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "getReservedPositions",
+          "operationId": "getReservedPositionsUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "dataInceput",
+              "in": "query",
+              "description": "dataInceput",
+              "required": true,
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "name": "dataSfarsit",
+              "in": "query",
+              "description": "dataSfarsit",
+              "required": true,
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "name": "plajaId",
+              "in": "query",
+              "description": "plajaId",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/rezervari/{id}": {
+        "get": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "getRezervareById",
+          "operationId": "getRezervareByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Rezervare"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "updateRezervare",
+          "operationId": "updateRezervareUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedRezervare",
+              "description": "updatedRezervare",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Rezervare"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Rezervare"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "rezervare-controller"
+          ],
+          "summary": "deleteRezervare",
+          "operationId": "deleteRezervareUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/stari-echipamente-plaja": {
+        "get": {
+          "tags": [
+            "stare-echipament-plaja-controller"
+          ],
+          "summary": "getAllStariEchipamentePlaja",
+          "operationId": "getAllStariEchipamentePlajaUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/StareEchipamentPlaja"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "stare-echipament-plaja-controller"
+          ],
+          "summary": "createStareEchipamentPlaja",
+          "operationId": "createStareEchipamentPlajaUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "stareEchipamentPlaja",
+              "description": "stareEchipamentPlaja",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/stari-echipamente-plaja/{id}": {
+        "get": {
+          "tags": [
+            "stare-echipament-plaja-controller"
+          ],
+          "summary": "getStareEchipamentPlajaById",
+          "operationId": "getStareEchipamentPlajaByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlaja"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "stare-echipament-plaja-controller"
+          ],
+          "summary": "updateStareEchipamentPlaja",
+          "operationId": "updateStareEchipamentPlajaUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedStare",
+              "description": "updatedStare",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "stare-echipament-plaja-controller"
+          ],
+          "summary": "deleteStareEchipamentPlaja",
+          "operationId": "deleteStareEchipamentPlajaUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "stare-echipament-plaja-controller"
+          ],
+          "summary": "actualizeazaPartial",
+          "operationId": "actualizeazaPartialUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "dto",
+              "description": "dto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlajaDTO"
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/StareEchipamentPlaja"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/stari-rezervari": {
+        "get": {
+          "tags": [
+            "stare-rezervare-controller"
+          ],
+          "summary": "getAllStariRezervari",
+          "operationId": "getAllStariRezervariUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/StareRezervare"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/statiuni": {
+        "get": {
+          "tags": [
+            "statiune-controller"
+          ],
+          "summary": "getAllStatiuni",
+          "operationId": "getAllStatiuniUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Statiune"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "statiune-controller"
+          ],
+          "summary": "createStatiune",
+          "operationId": "createStatiuneUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "statiune",
+              "description": "statiune",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Statiune"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Statiune"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/statiuni/{id}": {
+        "get": {
+          "tags": [
+            "statiune-controller"
+          ],
+          "summary": "getStatiuneById",
+          "operationId": "getStatiuneByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Statiune"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "statiune-controller"
+          ],
+          "summary": "updateStatiune",
+          "operationId": "updateStatiuneUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedStatiune",
+              "description": "updatedStatiune",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Statiune"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Statiune"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "statiune-controller"
+          ],
+          "summary": "deleteStatiune",
+          "operationId": "deleteStatiuneUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "statiune-controller"
+          ],
+          "summary": "patchStatiune",
+          "operationId": "patchStatiuneUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "patchDTO",
+              "description": "patchDTO",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/StatiuneDTO"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Statiune"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/test": {
+        "get": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "getPlaceDetails",
+          "operationId": "getPlaceDetailsUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/tipuri-echipamente-plaja": {
+        "get": {
+          "tags": [
+            "tip-echipament-plaja-controller"
+          ],
+          "summary": "getAllTipuriEchipamentePlaja",
+          "operationId": "getAllTipuriEchipamentePlajaUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/TipEchipamentPlaja"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "tip-echipament-plaja-controller"
+          ],
+          "summary": "createTipEchipamentPlaja",
+          "operationId": "createTipEchipamentPlajaUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "tipEchipamentPlaja",
+              "description": "tipEchipamentPlaja",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/tipuri-echipamente-plaja/{id}": {
+        "get": {
+          "tags": [
+            "tip-echipament-plaja-controller"
+          ],
+          "summary": "getTipEchipamentPlajaById",
+          "operationId": "getTipEchipamentPlajaByIdUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlaja"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "tip-echipament-plaja-controller"
+          ],
+          "summary": "updateTipEchipamentPlaja",
+          "operationId": "updateTipEchipamentPlajaUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "updatedTip",
+              "description": "updatedTip",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlaja"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlaja"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "tip-echipament-plaja-controller"
+          ],
+          "summary": "deleteTipEchipamentPlaja",
+          "operationId": "deleteTipEchipamentPlajaUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "tip-echipament-plaja-controller"
+          ],
+          "summary": "patchTipEchipamentPlaja",
+          "operationId": "patchTipEchipamentPlajaUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "in": "body",
+              "name": "patchDto",
+              "description": "patchDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlajaDTO"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TipEchipamentPlaja"
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/two-factor-setup": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "getTwoFactorSetup",
+          "operationId": "getTwoFactorSetupUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TwoFactorSetupDto"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/update-profile": {
+        "put": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "updateProfile",
+          "operationId": "updateProfileUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "userDto",
+              "description": "userDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UserDto"
+              }
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/user/me": {
+        "get": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "getCurrentUser",
+          "operationId": "getCurrentUserUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/UserDto"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/verify-two-factor": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "summary": "verifyTwoFactor",
+          "operationId": "verifyTwoFactorUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "accountNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "accountNonLocked",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "attributes",
+              "in": "query",
+              "required": false,
+              "type": "object"
+            },
+            {
+              "name": "authorities[0].authority",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "credentialsNonExpired",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "in": "query",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "twoFactorVerificationRequestDto",
+              "description": "twoFactorVerificationRequestDto",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TwoFactorVerificationRequestDto"
+              }
+            },
+            {
+              "name": "username",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/TwoFactorDto"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "AuthResponseDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "tokenType": {
+            "type": "string"
+          },
+          "twoFactorRequired": {
+            "type": "boolean"
+          }
+        },
+        "title": "AuthResponseDto"
+      },
+      "ChangePasswordDto": {
+        "type": "object",
+        "required": [
+          "currentPassword"
+        ],
+        "properties": {
+          "currentPassword": {
+            "type": "string"
+          },
+          "newPassword": {
+            "type": "string"
+          }
+        },
+        "title": "ChangePasswordDto"
+      },
+      "EchipamentPlaja": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "plaja": {
+            "$ref": "#/definitions/Plaja"
+          },
+          "pozitieColoana": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pozitieLinie": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pretCurent": {
+            "$ref": "#/definitions/Pret"
+          },
+          "preturi": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Pret"
+            }
+          },
+          "stareEchipament": {
+            "$ref": "#/definitions/StareEchipamentPlaja"
+          },
+          "tipEchipament": {
+            "$ref": "#/definitions/TipEchipamentPlaja"
+          }
+        },
+        "title": "EchipamentPlaja"
+      },
+      "EchipamentPlajaDTO": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "plajaDenumire": {
+            "type": "string"
+          },
+          "plajaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pozitieColoana": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pozitieLinie": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pretCurent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stareEchipamentDenumire": {
+            "type": "string"
+          },
+          "stareEchipamentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipEchipamentDenumire": {
+            "type": "string"
+          },
+          "tipEchipamentId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "EchipamentPlajaDTO"
+      },
+      "FileDb": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "IMAGE_JPEG",
+              "IMAGE_PNG"
+            ]
+          }
+        },
+        "title": "FileDb"
+      },
+      "FileDbDto": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "title": "FileDbDto"
+      },
+      "Firma": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "adresa": {
+            "type": "string"
+          },
+          "cui": {
+            "type": "string"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telefon": {
+            "type": "string"
+          }
+        },
+        "title": "Firma"
+      },
+      "FirmaDTO": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "adresa": {
+            "type": "string"
+          },
+          "cui": {
+            "type": "string"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "telefon": {
+            "type": "string"
+          }
+        },
+        "title": "FirmaDTO"
+      },
+      "ForgottenPasswordRequestDto": {
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "title": "ForgottenPasswordRequestDto"
+      },
+      "JwtToken": {
+        "type": "object",
+        "required": [
+          "tokenType"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tokenType": {
+            "type": "string",
+            "enum": [
+              "ACCOUNT_ACTIVATION",
+              "EMAIL_UPDATE",
+              "FORGOTTEN_PASSWORD",
+              "REFRESH"
+            ]
+          },
+          "user": {
+            "$ref": "#/definitions/User"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "title": "JwtToken"
+      },
+      "LoginRequestDto": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "rememberMe": {
+            "type": "boolean"
+          }
+        },
+        "title": "LoginRequestDto"
+      },
+      "LoginVerificationRequestDto": {
+        "type": "object",
+        "required": [
+          "code",
+          "password"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "rememberMe": {
+            "type": "boolean"
+          }
+        },
+        "title": "LoginVerificationRequestDto"
+      },
+      "ModelAndView": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "object"
+          },
+          "modelMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "reference": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCEPTED",
+              "ALREADY_REPORTED",
+              "BAD_GATEWAY",
+              "BAD_REQUEST",
+              "BANDWIDTH_LIMIT_EXCEEDED",
+              "CHECKPOINT",
+              "CONFLICT",
+              "CONTINUE",
+              "CREATED",
+              "DESTINATION_LOCKED",
+              "EXPECTATION_FAILED",
+              "FAILED_DEPENDENCY",
+              "FORBIDDEN",
+              "FOUND",
+              "GATEWAY_TIMEOUT",
+              "GONE",
+              "HTTP_VERSION_NOT_SUPPORTED",
+              "IM_USED",
+              "INSUFFICIENT_SPACE_ON_RESOURCE",
+              "INSUFFICIENT_STORAGE",
+              "INTERNAL_SERVER_ERROR",
+              "I_AM_A_TEAPOT",
+              "LENGTH_REQUIRED",
+              "LOCKED",
+              "LOOP_DETECTED",
+              "METHOD_FAILURE",
+              "METHOD_NOT_ALLOWED",
+              "MOVED_PERMANENTLY",
+              "MOVED_TEMPORARILY",
+              "MULTIPLE_CHOICES",
+              "MULTI_STATUS",
+              "NETWORK_AUTHENTICATION_REQUIRED",
+              "NON_AUTHORITATIVE_INFORMATION",
+              "NOT_ACCEPTABLE",
+              "NOT_EXTENDED",
+              "NOT_FOUND",
+              "NOT_IMPLEMENTED",
+              "NOT_MODIFIED",
+              "NO_CONTENT",
+              "OK",
+              "PARTIAL_CONTENT",
+              "PAYLOAD_TOO_LARGE",
+              "PAYMENT_REQUIRED",
+              "PERMANENT_REDIRECT",
+              "PRECONDITION_FAILED",
+              "PRECONDITION_REQUIRED",
+              "PROCESSING",
+              "PROXY_AUTHENTICATION_REQUIRED",
+              "REQUESTED_RANGE_NOT_SATISFIABLE",
+              "REQUEST_ENTITY_TOO_LARGE",
+              "REQUEST_HEADER_FIELDS_TOO_LARGE",
+              "REQUEST_TIMEOUT",
+              "REQUEST_URI_TOO_LONG",
+              "RESET_CONTENT",
+              "SEE_OTHER",
+              "SERVICE_UNAVAILABLE",
+              "SWITCHING_PROTOCOLS",
+              "TEMPORARY_REDIRECT",
+              "TOO_EARLY",
+              "TOO_MANY_REQUESTS",
+              "UNAUTHORIZED",
+              "UNAVAILABLE_FOR_LEGAL_REASONS",
+              "UNPROCESSABLE_ENTITY",
+              "UNSUPPORTED_MEDIA_TYPE",
+              "UPGRADE_REQUIRED",
+              "URI_TOO_LONG",
+              "USE_PROXY",
+              "VARIANT_ALSO_NEGOTIATES"
+            ]
+          },
+          "view": {
+            "$ref": "#/definitions/View"
+          },
+          "viewName": {
+            "type": "string"
+          }
+        },
+        "title": "ModelAndView"
+      },
+      "O2AuthInfoDto": {
+        "type": "object",
+        "properties": {
+          "needToSetPassword": {
+            "type": "boolean"
+          }
+        },
+        "title": "O2AuthInfoDto"
+      },
+      "PasswordResetRequestDto": {
+        "type": "object",
+        "required": [
+          "password",
+          "token"
+        ],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "title": "PasswordResetRequestDto"
+      },
+      "Plaja": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "descriere": {
+            "type": "string"
+          },
+          "detaliiWeb": {
+            "type": "object"
+          },
+          "firma": {
+            "$ref": "#/definitions/Firma"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numarSezlonguri": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statiune": {
+            "$ref": "#/definitions/Statiune"
+          }
+        },
+        "title": "Plaja"
+      },
+      "PlajaDTO": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "descriere": {
+            "type": "string"
+          },
+          "firmaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numarSezlonguri": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "statiuneId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "PlajaDTO"
+      },
+      "Poza": {
+        "type": "object",
+        "properties": {
+          "caleImagine": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ordine": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "plajaId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "Poza"
+      },
+      "Pret": {
+        "type": "object",
+        "properties": {
+          "dataOra": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "echipamentPlajaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "valoare": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "Pret"
+      },
+      "PretDTO": {
+        "type": "object",
+        "properties": {
+          "dataOra": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "echipamentPlajaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "valoare": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "PretDTO"
+      },
+      "Rezervare": {
+        "type": "object",
+        "properties": {
+          "codRezervare": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stareRezervare": {
+            "$ref": "#/definitions/StareRezervare"
+          },
+          "utilizator": {
+            "$ref": "#/definitions/User"
+          }
+        },
+        "title": "Rezervare"
+      },
+      "SignUpRequestDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 2147483647
+          },
+          "password": {
+            "type": "string",
+            "pattern": "^(?=.*[\\d])(?=.*[A-Z])(?=.*[a-z])[\\w!@#$%^&*]{8,}$"
+          }
+        },
+        "title": "SignUpRequestDto"
+      },
+      "StareEchipamentPlaja": {
+        "type": "object",
+        "properties": {
+          "dataOra": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "StareEchipamentPlaja"
+      },
+      "StareEchipamentPlajaDTO": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          }
+        },
+        "title": "StareEchipamentPlajaDTO"
+      },
+      "StareRezervare": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "StareRezervare"
+      },
+      "Statiune": {
+        "type": "object",
+        "properties": {
+          "denumire": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "latitudine": {
+            "type": "number"
+          },
+          "longitudine": {
+            "type": "number"
+          }
+        },
+        "title": "Statiune"
+      },
+      "StatiuneDTO": {
+        "type": "object",
+        "properties": {
+          "denumire": {
+            "type": "string"
+          },
+          "latitudine": {
+            "type": "number"
+          },
+          "longitudine": {
+            "type": "number"
+          }
+        },
+        "title": "StatiuneDTO"
+      },
+      "TipEchipamentPlaja": {
+        "type": "object",
+        "required": [
+          "denumire"
+        ],
+        "properties": {
+          "dataOra": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "denumire": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "TipEchipamentPlaja"
+      },
+      "TipEchipamentPlajaDTO": {
+        "type": "object",
+        "properties": {
+          "activ": {
+            "type": "boolean"
+          },
+          "denumire": {
+            "type": "string"
+          }
+        },
+        "title": "TipEchipamentPlajaDTO"
+      },
+      "TokenAccessRequestDto": {
+        "type": "object",
+        "required": [
+          "token"
+        ],
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "title": "TokenAccessRequestDto"
+      },
+      "TokenResponseDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          }
+        },
+        "title": "TokenResponseDto"
+      },
+      "TwoFactorDto": {
+        "type": "object",
+        "properties": {
+          "verificationCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "title": "TwoFactorDto"
+      },
+      "TwoFactorRecoveryCode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "recoveryCode": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/definitions/User"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "TwoFactorRecoveryCode"
+      },
+      "TwoFactorSetupDto": {
+        "type": "object",
+        "properties": {
+          "mimeType": {
+            "type": "string"
+          },
+          "qrData": {
+            "type": "string",
+            "format": "byte"
+          }
+        },
+        "title": "TwoFactorSetupDto"
+      },
+      "TwoFactorVerificationRequestDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          }
+        },
+        "title": "TwoFactorVerificationRequestDto"
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "authProvider": {
+            "type": "string",
+            "enum": [
+              "facebook",
+              "github",
+              "google",
+              "local"
+            ]
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "jwtTokens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/JwtToken"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "profileImage": {
+            "$ref": "#/definitions/FileDb"
+          },
+          "providerId": {
+            "type": "string"
+          },
+          "requestedNewEmail": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "USER"
+            ]
+          },
+          "twoFactorEnabled": {
+            "type": "boolean"
+          },
+          "twoFactorRecoveryCodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/TwoFactorRecoveryCode"
+            }
+          },
+          "twoFactorSecret": {
+            "type": "string"
+          }
+        },
+        "title": "User"
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 2147483647
+          },
+          "o2AuthInfo": {
+            "$ref": "#/definitions/O2AuthInfoDto"
+          },
+          "profileImage": {
+            "$ref": "#/definitions/FileDbDto"
+          },
+          "twoFactorEnabled": {
+            "type": "boolean"
+          }
+        },
+        "title": "UserDto"
+      },
+      "View": {
+        "type": "object",
+        "properties": {
+          "contentType": {
+            "type": "string"
+          }
+        },
+        "title": "View"
+      }
+    }
+  }

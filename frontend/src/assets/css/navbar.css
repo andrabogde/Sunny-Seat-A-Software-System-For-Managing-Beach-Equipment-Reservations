@@ -1,0 +1,97 @@
+/* Stiluri suplimentare pentru navbar-ul modern */
+
+.navbar {
+    transition: all 0.3s ease;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .navbar-scrolled {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .navbar .nav-link {
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .navbar .nav-link:hover {
+    color: var(--bs-primary);
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+  
+  .navbar .nav-link.active {
+    color: var(--bs-primary);
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  .navbar .dropdown-item {
+    transition: all 0.2s ease;
+  }
+  
+  .navbar .dropdown-item:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+  
+  .navbar .dropdown-item:active {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  /* Stiluri pentru mobile */
+  @media (max-width: 991.98px) {
+    .navbar-collapse {
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      padding: 1rem 0;
+    }
+    
+    .navbar .nav-link {
+      margin-bottom: 0.5rem;
+    }
+    
+    .navbar-nav .dropdown-menu {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    
+    .navbar-brand img {
+      height: 36px;
+    }
+  }
+  
+  /* Animație discretă pentru dropdown */
+  .dropdown-menu {
+    animation: fadeIn 0.2s ease;
+    transform-origin: top right;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Stilizare pentru badge */
+  .badge.bg-danger {
+    box-shadow: 0 0 0 2px white;
+  }
+  
+  /* Stilizare pentru butonul de profil */
+  #userDropdown:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+  
+  /* Optimizare pentru interacțiuni tactile */
+  @media (hover: none) {
+    .navbar .nav-link:hover {
+      background-color: transparent;
+    }
+  }

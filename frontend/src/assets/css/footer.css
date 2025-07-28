@@ -1,0 +1,99 @@
+/* Footer.css */
+
+.footer {
+    /* background-color: #212529; /* Culoare de fundal dacă nu folosești bg-dark */
+    /* padding-top: 3rem; */ /* Este deja setat prin pt-5 */
+    /* padding-bottom: 2rem; */ /* Este deja setat prin pb-4 */
+  }
+  
+  .footer h5 {
+    /* font-weight: bold; */ /* Bootstrap ar trebui să se ocupe de asta */
+    /* Poți adăuga alte stiluri aici dacă este necesar */
+  }
+  
+  .footer .social-icon svg {
+    transition: color 0.3s ease;
+  }
+  
+  .footer .social-icon:hover svg {
+    color: #ffffff !important; /* Sau culoarea ta de accent */
+  }
+  
+  .footer-links li a.footer-link-item {
+    display: inline-block;
+    padding-bottom: 2px; /* Spațiu pentru bordură la hover */
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links li a.footer-link-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px; /* Grosimea subliniere */
+    bottom: 0;
+    left: 0;
+    background-color: var(--bs-primary); /* Sau culoarea ta de accent/primary */
+    transition: width 0.3s ease;
+    visibility: hidden;
+  }
+  
+  .footer-links li a.footer-link-item:hover {
+    color: #ffffff !important; /* Sau culoarea ta de accent */
+  }
+  
+  .footer-links li a.footer-link-item:hover::after {
+    width: 100%;
+    visibility: visible;
+  }
+  
+  /* Ajustări pentru link-urile de contact dacă este necesar */
+  .footer .list-unstyled a.text-white-50:hover {
+    color: #ffffff !important; /* Sau culoarea ta de accent */
+    text-decoration: underline; /* Sau alt efect de hover */
+  }
+  
+  /* Asigură-te că input-ul și butonul din newsletter sunt aliniate corect */
+  .footer .input-group .form-control {
+    /* Poți adăuga stiluri specifice aici dacă este necesar */
+    /* De exemplu, pentru a se potrivi cu tema întunecată */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+  
+  .footer .input-group .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .footer .input-group .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--bs-primary); /* Sau culoarea ta de accent */
+    color: #fff;
+    box-shadow: none; /* Elimină box-shadow-ul Bootstrap la focus dacă dorești */
+  }
+  
+  /* Stil pentru butonul de accent dacă nu este definit global */
+  /*
+  .btn-accent {
+    background-color: #yourAccentColor;
+    border-color: #yourAccentColor;
+    color: #fff;
+  }
+  
+  .btn-accent:hover {
+    background-color: darken(#yourAccentColor, 10%);
+    border-color: darken(#yourAccentColor, 10%);
+    color: #fff;
+  }
+  */
+  
+  /* Responsive adjustments if needed */
+  @media (max-width: 767.98px) {
+    .footer .text-md-end {
+      text-align: center !important;
+    }
+    .footer .text-md-start {
+      text-align: center !important;
+    }
+  }
