@@ -7,6 +7,8 @@
 [![Database](https://img.shields.io/badge/database-MySQL-orange)](#)  
 
 ---
+![Sunny Seat Logo](https://raw.githubusercontent.com/andrabogde/Sunny-Seat-A-Software-System-For-Managing-Beach-Equipment-Reservations/main/frontend/public/images/sunbed-choice.jpg)
+
 🎥 **Watch Demo Video:** [Click here to view](https://github.com/andrabogde/Sunny-Seat-A-Software-System-For-Managing-Beach-Equipment-Reservations/releases/download/v1.0.0-demo/sunnyseat.mp4)
 
 
