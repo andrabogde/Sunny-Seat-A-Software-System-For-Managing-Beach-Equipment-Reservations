@@ -1,0 +1,24 @@
+app:
+  frontEndUri: https://www.full-stack-template.com
+  deleteExpiredTokensDelayMsec: 86400000 # 1 day
+  updatePlaceDetailsDelayMsec: 600000 # 10 minutes
+  allowedOrigins:
+    - ${app.frontEndUri}
+    - https://auth.expo.io/@hasatori/ReactNativeFrontend
+  authorizedRedirectUris:
+    - ${app.frontEndUri}/oauth2/redirect
+    - https://auth.expo.io/@hasatori/ReactNativeFrontend
+  accountActivationUri: ${app.frontEndUri}/activate-account
+  emailChangeConfirmationUri: ${app.frontEndUri}/confirm-email-change
+  passwordResetUri: ${app.frontEndUri}/password-reset
+  auth:
+    accessTokenExpirationMsec: 300000 # 5 minutes
+    refreshTokenExpirationMsec: 2592000000 # 30 days
+    verificationTokenExpirationMsec: 3600000 # 1 hour
+stripe:
+  public:
+    key: public_key
+  secret:
+    key: secret_key
+  # webhook:
+  #   secret: ${STRIPE_WEBHOOK_SECRET:whsec_default}

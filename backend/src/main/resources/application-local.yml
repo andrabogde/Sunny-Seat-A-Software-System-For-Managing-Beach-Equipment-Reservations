@@ -1,0 +1,126 @@
+# application-local.yml - CONFIGURAȚIA TA ACTUALIZATĂ
+
+app:
+  name: "SunnySeat"  # ADĂUGAT pentru email-uri
+  frontEndUri: http://localhost:4000
+  deleteExpiredTokensDelayMsec: 30000 # 30 seconds
+  updatePlaceDetailsDelayMsec: 1800000 # 30 minutes
+  allowedOrigins:
+    - ${app.frontEndUri}
+    - https://auth.expo.io/@hasatori/ReactNativeFrontend
+  authorizedRedirectUris:
+    - ${app.frontEndUri}/oauth2/redirect
+    - https://auth.expo.io/@hasatori/ReactNativeFrontend
+  accountActivationUri: ${app.frontEndUri}/-account
+  emailChangeConfirmationUri: ${app.frontEndUri}/confirm-email-change
+  passwordResetUri: ${app.frontEndUri}/reset-password  # CORECT - cu reset
+  
+  # ADĂUGAT pentru email-uri
+  email-from: "andrabogde@yahoo.com"
+  email-from-name: "SunnySeat"
+  
+stripe:
+  public:
+    key: public_key
+  secret:
+    key: secret_key
+  # webhook:
+  #   secret: ${STRIPE_WEBHOOK_SECRET:whsec_default}
+
+  auth:
+    accessTokenExpirationMsec: 30000000
+    refreshTokenExpirationMsec: 90000000 
+    verificationTokenExpirationMsec: 3600000  # SCHIMBAT în 1 oră pentru reset parolă
+    tokenSecret: mySecretKey
+
+# VARIABILE PENTRU EMAIL - ACTUALIZATE
+MAIL_SERVER_HOST: smtp.mail.yahoo.com  # SCHIMBAT pentru Yahoo
+MAIL_SERVER_PORT: 587  # ADĂUGAT
+MAIL_SERVER_USERNAME: ${EMAIL_USERNAME}  # SCHIMBAT
+MAIL_SERVER_PASSWORD: ${EMAIL_APP_PASSWORD}  # SCHIMBAT
+
+DATASOURCE_URL: jdbc:mysql://localhost:3306/administrare_plaje
+DATASOURCE_USERNAME: root
+DATASOURCE_PASSWORD:
+
+logging:
+  level:
+    com.example.fullstacktemplate.service.TokenService: DEBUG
+    com.example.fullstacktemplate.service.AuthenticationService: DEBUG
+    com.example.fullstacktemplate.service.EmailService: DEBUG  # ADĂUGAT pentru debug email
+    org.springframework.mail: DEBUG  # ADĂUGAT pentru debug SMTP
+
+spring:
+  messages:
+    basename: lang/res
+    fallback-to-system-locale: true
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${GOOGLE_CLIENT_ID}
+            clientSecret: ${GOOGLE_CLIENT_SECRET}
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 428949898945138
+            clientSecret: 6093ed1ab3a74524a7dd4416667a5679
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - public_profile
+          github:
+            clientId: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+        provider:
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,name,email,picture.width(250).height(250)
+            
+  # CONFIGURAȚIA MAIL ACTUALIZATĂ PENTRU YAHOO
+  mail:
+    host: ${MAIL_SERVER_HOST}
+    port: ${MAIL_SERVER_PORT:587}
+    username: ${MAIL_SERVER_USERNAME}
+    password: ${MAIL_SERVER_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          timeout: 5000
+          connectiontimeout: 5000
+          writetimeout: 5000
+        debug: true  # ADĂUGAT pentru debugging
+    protocol: smtp
+    test-connection: false
+
+google:
+  api: 
+    key: google_api_key
+weather: 
+  api: 
+    key: weather_api_key
